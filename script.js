@@ -104,6 +104,11 @@ function loadStoryCreation() {
     document.getElementById('story-creation').style.display = 'block';
 }
 
+function showMainStory() {
+    document.getElementById('story-creation').style.display = 'none';
+    document.getElementById('story').style.display = 'block';
+}
+
 function allowDrop(event) {
     event.preventDefault();
 }
@@ -134,4 +139,33 @@ function saveStory() {
     for (let i = 0; i < elements.length; i++) {
         if (elements[i].id === 'text') {
             customStory.text = elements[i].innerText;
-        } else if (elements[i].id
+        } else if (elements[i].id === 'choice') {
+            customStory.choices.push({ text: elements[i].innerText, next: '' });
+        }
+    }
+
+    localStorage.setItem(storyID, JSON.stringify(customStory));
+    document.getElementById('story-id').innerText = `Your story ID is: ${storyID}`;
+}
+
+// To load a story by ID
+function loadStoryByID(storyID) {
+    const savedStory = localStorage.getItem(storyID);
+    if (savedStory) {
+        const storyData = JSON.parse(savedStory);
+        const storyText = document.getElementById('story-text');
+        const choicesDiv = document.getElementById('choices');
+
+        storyText.innerText = storyData.text;
+        choicesDiv.innerHTML = '';
+
+        storyData.choices.forEach(choice => {
+            const button = document.createElement('button');
+            button.innerText = choice.text;
+            button.onclick = () => makeChoice(choice.next); // This can be adjusted based on how you want to handle custom stories
+            choicesDiv.appendChild(button);
+        });
+    } else {
+        alert('Story not found!');
+    }
+}
