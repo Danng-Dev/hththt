@@ -98,3 +98,40 @@ function makeChoice(choice) {
         choicesDiv.appendChild(button);
     });
 }
+
+function loadStoryCreation() {
+    document.getElementById('story').style.display = 'none';
+    document.getElementById('story-creation').style.display = 'block';
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drag(event) {
+    event.dataTransfer.setData('text', event.target.id);
+}
+
+function drop(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData('text');
+    const nodeCopy = document.getElementById(data).cloneNode(true);
+    nodeCopy.classList.add('element');
+    nodeCopy.setAttribute('draggable', 'false');
+    event.target.appendChild(nodeCopy);
+}
+
+function generateID() {
+    return Math.random().toString(36).substring(2, 7);
+}
+
+function saveStory() {
+    const storyID = generateID();
+    const editorArea = document.getElementById('editor-area');
+    const elements = editorArea.getElementsByClassName('element');
+    const customStory = { text: '', choices: [] };
+
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i].id === 'text') {
+            customStory.text = elements[i].innerText;
+        } else if (elements[i].id
