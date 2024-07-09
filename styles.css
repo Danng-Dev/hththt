@@ -42,3 +42,41 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
+#story-creation {
+    margin-top: 20px;
+}
+
+#story-editor {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.editor-elements {
+    width: 20%;
+}
+
+.editor-elements .draggable {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: grab;
+    border-radius: 5px;
+}
+
+#editor-area {
+    width: 75%;
+    height: 400px;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+#editor-area .element {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
