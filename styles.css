@@ -43,7 +43,7 @@ button:hover {
     background-color: #45a049;
 }
 
-#story-creation {
+#story-creation, #load-story {
     margin-top: 20px;
 }
 
@@ -77,6 +77,14 @@ button:hover {
     background-color: #fff;
     padding: 10px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#load-story input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 200px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
