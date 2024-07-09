@@ -1,4 +1,3 @@
-
 const story = {
     start: {
         text: "You find yourself at a crossroads in a dense forest. Do you go left towards the mountains or right towards the village?",
@@ -153,6 +152,11 @@ function saveStory() {
 
 function loadStory() {
     const storyID = document.getElementById('story-id-input').value;
+    loadStoryByID(storyID);
+    window.history.pushState({}, '', `?storyID=${storyID}`);
+}
+
+function loadStoryByID(storyID) {
     const savedStory = localStorage.getItem(storyID);
     if (savedStory) {
         const storyData = JSON.parse(savedStory);
@@ -175,4 +179,3 @@ function loadStory() {
         alert('Story not found!');
     }
 }
-   
