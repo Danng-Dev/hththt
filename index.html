@@ -40,6 +40,19 @@
         </section>
     </div>
     <script src="script.js"></script>
+    <script>
+        // Function to load story from URL
+        function loadStoryFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const storyID = urlParams.get('storyID');
+            if (storyID) {
+                loadStoryByID(storyID);
+            }
+        }
+        // Call the function on page load
+        window.onload = loadStoryFromURL;
+    </script>
 </body>
 </html>
+
 
