@@ -1,3 +1,4 @@
+
 const story = {
     start: {
         text: "You find yourself at a crossroads in a dense forest. Do you go left towards the mountains or right towards the village?",
@@ -101,12 +102,14 @@ function makeChoice(choice) {
 
 function loadStoryCreation() {
     document.getElementById('story').style.display = 'none';
+    document.getElementById('load-story').style.display = 'none';
     document.getElementById('story-creation').style.display = 'block';
 }
 
-function showMainStory() {
+function showLoadStory() {
+    document.getElementById('story').style.display = 'none';
     document.getElementById('story-creation').style.display = 'none';
-    document.getElementById('story').style.display = 'block';
+    document.getElementById('load-story').style.display = 'block';
 }
 
 function allowDrop(event) {
@@ -148,8 +151,8 @@ function saveStory() {
     document.getElementById('story-id').innerText = `Your story ID is: ${storyID}`;
 }
 
-// To load a story by ID
-function loadStoryByID(storyID) {
+function loadStory() {
+    const storyID = document.getElementById('story-id-input').value;
     const savedStory = localStorage.getItem(storyID);
     if (savedStory) {
         const storyData = JSON.parse(savedStory);
@@ -162,10 +165,14 @@ function loadStoryByID(storyID) {
         storyData.choices.forEach(choice => {
             const button = document.createElement('button');
             button.innerText = choice.text;
-            button.onclick = () => makeChoice(choice.next); // This can be adjusted based on how you want to handle custom stories
+            button.onclick = () => makeChoice(choice.next);
             choicesDiv.appendChild(button);
         });
+
+        document.getElementById('load-story').style.display = 'none';
+        document.getElementById('story').style.display = 'block';
     } else {
         alert('Story not found!');
     }
 }
+   
