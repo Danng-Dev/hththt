@@ -10,6 +10,9 @@
     <div class="container">
         <header>
             <h1>THINNGGGYY Interactive Storytelling</h1>
+            <nav>
+                <button onclick="loadStoryCreation()">Create Your Own Story</button>
+            </nav>
         </header>
         <main id="story">
             <p id="story-text">Welcome to the world of THINNGGGYY. Your adventure begins now!</p>
@@ -17,7 +20,20 @@
                 <button onclick="makeChoice('start')">Start Your Journey</button>
             </div>
         </main>
+        <section id="story-creation" style="display:none;">
+            <h2>Create Your Story</h2>
+            <div id="story-editor">
+                <div class="editor-elements">
+                    <div draggable="true" ondragstart="drag(event)" id="text" class="draggable">Text</div>
+                    <div draggable="true" ondragstart="drag(event)" id="choice" class="draggable">Choice</div>
+                </div>
+                <div id="editor-area" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <button onclick="saveStory()">Save Story</button>
+            <p id="story-id"></p>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
