@@ -12,7 +12,7 @@
             <h1>THINNGGGYY Interactive Storytelling</h1>
             <nav>
                 <button onclick="loadStoryCreation()">Create Your Own Story</button>
-                <button onclick="showMainStory()">Back to Main Story</button>
+                <button onclick="showLoadStory()">Load Story</button>
             </nav>
         </header>
         <main id="story">
@@ -33,7 +33,13 @@
             <button onclick="saveStory()">Save Story</button>
             <p id="story-id"></p>
         </section>
+        <section id="load-story" style="display:none;">
+            <h2>Load Your Story</h2>
+            <input type="text" id="story-id-input" placeholder="Enter story ID">
+            <button onclick="loadStory()">Load</button>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
